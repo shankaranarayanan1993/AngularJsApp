@@ -1,0 +1,34 @@
+<!doctype html>
+<html ng-app="technologiesAppModule">
+    <head>
+        <title>AngularJS App</title>
+        <script src="../../node_modules/angular/angular.js"></script>
+        <script src="TechnologiesTable.js"></script>
+        <link rel="stylesheet" href="../AppsSyles.css">
+    </head>
+    <body ng-controller="technologiesAppController">
+        <div>
+            <table>
+                 <thead>
+                    <tr>
+                        <th> Name </th>
+                        <th> Likes </th>
+                        <th> Dislikes </th>
+                        <th> Like/Dislike </th>
+                    </tr>
+                 </thead>
+                <tbody>
+                     <tr ng-repeat="tech in technologies">
+                         <td>{{tech.name}} </td>
+                         <td> {{tech.likes}}</td>
+                         <td>  {{tech.dislikes}}</td>
+                         <td>
+                           <input type="button" value="Like"  ng-click="incrementLikes(tech)">
+                          <input type="button" value="Dislike"  ng-click="decrementLikes(tech)">
+                         </td>
+                     </tr>
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>

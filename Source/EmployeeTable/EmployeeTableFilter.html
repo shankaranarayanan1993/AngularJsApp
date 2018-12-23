@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html ng-app="myEmployee">
+    <head>
+        <title>AngularJS App</title>
+        <script src="../../node_modules/angular/angular.js"></script>
+        <script src="EmployeeTableFilter.js"></script>
+        <link rel="stylesheet" href="../AppsSyles.css">
+
+    </head>
+    <body ng-controller="myEmployeeController">
+    <div>
+        Rows To display : <input type="number" step="1" min="0" max="5" ng-model="rowLimit"/>
+        <br/> <br/>
+         Sory By :
+        <select ng-model="sortOrder">
+            <option value="0">Select car:</option>
+            <option value="name">Name ASC</option>
+            <option value="DOB">DOB ASC</option>
+            <option value="Gender">Gender ASC</option>
+            <option value="Salary">Salary ASC</option>
+        </select>
+        <br/> <br/>
+       <table>
+           <thead>
+               <tr>
+                   <th> Name </th>
+                   <th> DOB </th>
+                   <th> Gender </th>
+                   <th> Salary (In Number) </th>
+                   <th> Salary (In Currency) </th>
+               </tr>
+           </thead>
+           <tbody>
+                 <tr ng-repeat="emp in employesDetails | limitTo: rowLimit | orderBy : sortOrder">
+                     <td> {{emp.name | uppercase}} </td>
+                     <td> {{emp.DOB | date : "dd/MM/yyyy a"}} </td>
+                     <td> {{emp.Gender |lowercase}} </td>
+                     <td> {{emp.Salary | number:2}} </td>
+                     <td> {{emp.Salary | currency}} </td>
+                 </tr>
+           </tbody>
+       </table>
+    </div>
+    </body>
+</html>

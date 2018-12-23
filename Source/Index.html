@@ -1,0 +1,22 @@
+<!doctype html>
+<html ng-app="myModule">
+    <head>
+        <title>AngularJS App</title>
+        <script src="../node_modules/angular/angular.js"></script>
+        <script src="./index.js"></script>
+    </head>
+    <body ng-controller="myController">
+        <div >
+           <ul>
+               <li ng-repeat="country in countries">
+                   {{country.name}} - Index = {{$index}}
+                   <ul>
+                         <li ng-repeat="city in country.city">
+                               {{city.name}}  - Index = {{$index}}
+                         </li>
+                   </ul>
+               </li>
+           </ul>
+        </div>
+    </body>
+</html>
